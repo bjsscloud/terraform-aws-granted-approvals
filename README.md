@@ -94,7 +94,7 @@ Configuration Steps for a complete Azure AD installation
 Based on documentation here: https://docs.commonfate.io/granted-approvals/providers/azure-ad
 
   1. https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
-  2. New Application: `AWS <Environment> Granted Directory Sync`
+  2. New Application: `AWS <ENVIRONMENT> Granted Directory Sync`
      * a. Single Tenant (This Organization Directory Only)
      * b. Click Register
   3. API Permissions → Add
@@ -105,27 +105,27 @@ Based on documentation here: https://docs.commonfate.io/granted-approvals/provid
      * b. Click Add Permissions
   4. Click Grant Admin Consent - Or request Consent be granted from AAD Administrators
   5. Certificates and Secrets
-     * a. New Client Secret: " AWS <Environment> Granted Directory Sync "
+     * a. New Client Secret: " `AWS <ENVIRONMENT> Granted Directory Sync` "
      * b. Retrieve "Value" for later writing to Parameter Store
-  6. Store Application (Client) ID for use in tfvars: sso_granted["azure_client_id"]
-  7. Store Tenant ID for use in tfvars: sso_granted["azure_tenant_id"]
+  6. Store Application (Client) ID for use in tfvars: `sso_granted["azure_client_id"]`
+  7. Store Tenant ID for use in tfvars: `sso_granted["azure_tenant_id"]`
 
 ### 2. Prepare AzureAd Enterprise Application
 
 Based on documentation here: https://docs.commonfate.io/granted-approvals/providers/azure-ad
 
   1. https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade
-  2. Enterprise Applications → New → Create your own: " AWS <Environment> Granted SSO "
-  3. Store Application ID for use in tfvars: sso_granted["saml_sso_metadata_url"] = https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APPLICATION ID>
+  2. Enterprise Applications → New → Create your own: " `AWS <ENVIRONMENT> Granted SSO` "
+  3. Store Application ID for use in tfvars: `sso_granted["saml_sso_metadata_url"] = https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APPLICATION ID>`
   4. Set Reply URL and temporary Identifier:
-     * a. Identifier: urn:amazon:cognito:sp:eu-west-2_CHANGEME
+     * a. Identifier: `urn:amazon:cognito:sp:eu-west-2_CHANGEME`
      * b. Reply URL.  Use  "i" if you are not passing a custom domain to Granted. Use "ii" if you are.
-          - i. https://<project>-<environment>-sso-granted-web.auth.<REGION>.amazoncognito.com/saml2/idpresponse
-          - ii. https://auth.granted.<ROOT DOMAIN NAME>/saml2/idpresponse
+          - i. `https://<PROJECT>-<ENVIRONMENT>-sso-granted-web.auth.<REGION>.amazoncognito.com/saml2/idpresponse`
+          - ii. `https://auth.granted.<ROOT DOMAIN NAME>/saml2/idpresponse`
   5. Assign Groups (Create as necessary)
-     * a. Group for Admins: e.g. EntApp-AWS-<Environment>-Granted-Admins
-     * b. Group for User Access: e.g. Core-AAD-Guests
-  6. Capture Admin Group Object ID for use in tfvars: sso_granted["administrator_group_id"]
+     * a. Group for Admins: e.g. `EntApp-AWS-<ENVIRONMENT>-Granted-Admins`
+     * b. Group for User Access: e.g. `Core-AAD-Guests`
+  6. Capture Admin Group Object ID for use in tfvars: `sso_granted["administrator_group_id"]`
 
 ### 3. Configure Terraform Environment
 
@@ -151,7 +151,7 @@ $ ./bin/terraform.sh -p <PROJECT> -g <GROUP> -e <ENVIRONMENT> -c sso -a apply
 
 ### 5. Update SAML Entity ID in AAD
 
-  1. Update the `AWS <Environment> Granted SSO` Enterprise Application SAML Settings. Replace `CHANGEME` in Identitfier (Entity ID) with the value of the terraform output: `web_cognito_user_pool_id`
+  1. Update the `AWS <ENVIRONMENT> Granted SSO` Enterprise Application SAML Settings. Replace `CHANGEME` in Identitfier (Entity ID) with the value of the terraform output: `web_cognito_user_pool_id`
 
 ### 6. Configure Slack App
 
