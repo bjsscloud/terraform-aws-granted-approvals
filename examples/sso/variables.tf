@@ -52,7 +52,7 @@ variable "default_tags" {
 # Granted
 ##
 
-variable "root_domain_zone_id" {
+variable "public_hosted_zone_id" {
   type        = string
   description = "AWS Route53 Public Hosted Zone ID. If provided will be used for a custom frontend domain for Granted Approvals"
   default     = null

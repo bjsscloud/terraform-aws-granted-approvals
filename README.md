@@ -31,7 +31,7 @@ sso_granted = {
 
 ```hcl
 variable "sso_granted" {
-  type       = map(any)
+  type        = map(any)
   description = "Configuration for Granted deployment"
 
   default = {
@@ -45,7 +45,7 @@ variable "sso_granted" {
 ```hcl
 module "granted" {
   count  = var.sso_granted["enabled"] ? 1 : 0
-  source = "../../modules/granted"
+  source = "bjsscloud/granted-approvals/aws"
 
   providers = {
     aws           = aws
