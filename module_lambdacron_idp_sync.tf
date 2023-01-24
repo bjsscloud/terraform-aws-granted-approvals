@@ -31,10 +31,10 @@ module "lambdacron_idp_sync" {
   handler_function_name = "syncer"
 
   lambda_env_vars = {
-    APPROVALS_COGNITO_USER_POOL_ID = aws_cognito_user_pool.web.id
-    APPROVALS_TABLE_NAME           = aws_dynamodb_table.main.name
-    IDENTITY_PROVIDER              = var.identity_provider_type
-    IDENTITY_SETTINGS              = local.identity_configuration
+    COMMONFATE_COGNITO_USER_POOL_ID = aws_cognito_user_pool.web.id
+    COMMONFATE_TABLE_NAME           = aws_dynamodb_table.main.name
+    COMMONFATE_IDENTITY_PROVIDER    = var.identity_provider_type
+    COMMONFATE_IDENTITY_SETTINGS    = local.identity_configuration
   }
 
   subscription_arns = var.lambda_dlq_targets

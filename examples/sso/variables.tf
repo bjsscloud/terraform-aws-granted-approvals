@@ -17,6 +17,12 @@ variable "region" {
   description = "The AWS Region"
 }
 
+
+variable "aws_sso_region" {
+  type        = string
+  description = "The Region that the AWS IAM Identity Center instance is deployed to"
+}
+
 variable "group" {
   type        = string
   description = "The group variables are being inherited from (often synonmous with account short-name)"
@@ -70,7 +76,7 @@ variable "public_hosted_zone_id" {
 #  saml_sso_metadata_content = "string"
 #}
 variable "sso_granted" {
-  type       = map(any)
+  type        = map(any)
   description = "Configuration for Granted Approvals deployment"
 
   default = {

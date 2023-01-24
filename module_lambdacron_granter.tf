@@ -29,9 +29,9 @@ module "lambdacron_granter" {
   handler_function_name = "granter"
 
   lambda_env_vars = {
-    EVENT_BUS_ARN    = aws_cloudwatch_event_bus.main.arn
-    EVENT_BUS_SOURCE = var.event_bus_source_key
-    PROVIDER_CONFIG  = local.provider_configuration
+    COMMONFATE_EVENT_BUS_ARN    = aws_cloudwatch_event_bus.main.arn
+    COMMONFATE_EVENT_BUS_SOURCE = var.event_bus_source_key
+    COMMONFATE_PROVIDER_CONFIG  = local.COMMONFATE_PROVIDER_CONFIGuration
   }
 
   subscription_arns = var.lambda_dlq_targets

@@ -19,12 +19,13 @@ function getEnv(key) {
  *
  * [
  *   'access-handler',
- *   'approvals',
+ *   'commonfate',
  *   'event-handler',
  *   'granter',
  *   'syncer',
  *   'slack-notifier',
  *   'webhook',
+ *   'cache-sync',
  * ]
  */
 const functionList = JSON.parse(getEnv('FUNCTION_LIST'));

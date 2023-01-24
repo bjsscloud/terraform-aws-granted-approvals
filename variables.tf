@@ -109,6 +109,12 @@ variable "idp_sync_schedule" {
   default     = "cron(0/5 * * * ? *)"
 }
 
+variable "cache_sync_schedule" {
+  type        = string
+  description = "An EventBridge Event Rule Schedule Expression for the Cache Sync Lambda Function"
+  default     = "cron(0/5 * * * ? *)"
+}
+
 # Identity Provider (SAML - Azure/Okta)
 
 variable "identity_provider_name" {
@@ -173,6 +179,11 @@ variable "aws_sso_identity_store_id" {
 variable "aws_sso_instance_arn" {
   type        = string
   description = "AWS SSO Instance ARN"
+}
+
+variable "aws_sso_region" {
+  type        = string
+  description = "AWS SSO Instance region"
 }
 
 # AWS API Gateway

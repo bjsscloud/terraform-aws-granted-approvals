@@ -1,1 +1,3 @@
-data "aws_ssoadmin_instances" "main" {}
+data "aws_ssoadmin_instances" "main" {
+  provider = aws.sso
+}
