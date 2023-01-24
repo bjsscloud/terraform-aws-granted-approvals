@@ -17,7 +17,7 @@ module "lambdacron_slack_notifier" {
   log_retention_in_days = var.lambda_function_log_retention_in_days
 
   allowed_triggers = {
-   SlackNotifierEventRule = {
+    SlackNotifierEventRule = {
       service        = "events"
       source_account = var.aws_account_id
       source_arn     = aws_cloudwatch_event_rule.slack_notifier.arn
@@ -37,10 +37,10 @@ module "lambdacron_slack_notifier" {
   handler_function_name = "slack-notifier"
 
   lambda_env_vars = {
-    APPROVALS_COGNITO_USER_POOL_ID = aws_cognito_user_pool.web.id
-    APPROVALS_FRONTEND_URL         = "https://${local.frontend_domain}"
-    APPROVALS_TABLE_NAME           = aws_dynamodb_table.main.name
-    NOTIFICATIONS_SETTINGS         = local.notifications_configuration
+    COMMONFATE_COGNITO_USER_POOL_ID   = aws_cognito_user_pool.web.id
+    COMMONFATE_FRONTEND_URL           = "https://${local.frontend_domain}"
+    COMMONFATE_TABLE_NAME             = aws_dynamodb_table.main.name
+    COMMONFATE_NOTIFICATIONS_SETTINGS = local.notifications_configuration
   }
 
   subscription_arns = var.lambda_dlq_targets

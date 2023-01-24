@@ -24,6 +24,10 @@ data "aws_iam_policy_document" "sso_admin" {
       "sso:ListAccountAssignments",
       "sso:ListPermissionSets",
       "sso:ListTagsForResource",
+      "organizations:ListAccountsForParent",
+      "organizations:ListOrganizationalUnitsForParent",
+      "organizations:ListRoots",
+      "organizations:ListTagsForResource"
     ]
 
     resources = [

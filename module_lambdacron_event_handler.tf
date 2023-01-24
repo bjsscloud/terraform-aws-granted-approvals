@@ -35,7 +35,7 @@ module "lambdacron_event_handler" {
   handler_function_name = "event-handler"
 
   lambda_env_vars = {
-    APPROVALS_TABLE_NAME = aws_dynamodb_table.main.name
+    COMMONFATE_TABLE_NAME = aws_dynamodb_table.main.name
   }
 
   subscription_arns = var.lambda_dlq_targets

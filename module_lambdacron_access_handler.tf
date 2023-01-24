@@ -44,11 +44,11 @@ module "lambdacron_access_handler" {
   handler_function_name = "access-handler"
 
   lambda_env_vars = {
-    EVENT_BUS_ARN     = aws_cloudwatch_event_bus.main.arn,
-    EVENT_BUS_SOURCE  = var.event_bus_source_key,
-    GRANTED_RUNTIME   = "lambda"
-    PROVIDER_CONFIG   = local.provider_configuration,
-    STATE_MACHINE_ARN = aws_sfn_state_machine.access_handler.arn,
+    COMMONFATE_EVENT_BUS_ARN          = aws_cloudwatch_event_bus.main.arn,
+    COMMONFATE_EVENT_BUS_SOURCE       = var.event_bus_source_key,
+    COMMONFATE_ACCESS_HANDLER_RUNTIME = "lambda"
+    COMMONFATE_PROVIDER_CONFIG        = local.commonfate_provider_configuration,
+    COMMONFATE_STATE_MACHINE_ARN      = aws_sfn_state_machine.access_handler.arn,
   }
 
   subscription_arns = var.lambda_dlq_targets

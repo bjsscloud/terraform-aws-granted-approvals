@@ -28,11 +28,12 @@ module "lambdacron_frontend_deployer" {
   lambda_env_vars = {
     FUNCTION_LIST = jsonencode([
       "access-handler",
-      "approvals",
+      "commonfate",
       "event-handler",
       "granter",
       "syncer",
       "slack-notifier",
+      "cache-sync",
       "webhook",
     ])
   }
