@@ -1,5 +1,5 @@
 locals {
-  COMMONFATE_PROVIDER_CONFIGuration = jsonencode({
+  commonfate_provider_configuration = jsonencode({
     "aws-sso" = {
       uses = "commonfate/aws-sso@v2"
 

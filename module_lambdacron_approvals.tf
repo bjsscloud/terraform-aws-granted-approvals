@@ -69,7 +69,7 @@ module "lambdacron_approvals" {
     COMMONFATE_MOCK_ACCESS_HANDLER    = false
     COMMONFATE_NOTIFICATIONS_SETTINGS = local.notifications_configuration
     COMMONFATE_PAGINATION_KMS_KEY_ARN = module.kms_api_pagination.key_arn
-    COMMONFATE_PROVIDER_CONFIG        = local.COMMONFATE_PROVIDER_CONFIGuration
+    COMMONFATE_PROVIDER_CONFIG        = local.commonfate_provider_configuration
   }
 
   subscription_arns = var.lambda_dlq_targets
